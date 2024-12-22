@@ -65,6 +65,16 @@ public class Main extends JFrame {
         updateButton.addActionListener(e -> updateContato());
         deleteButton.addActionListener(e -> deleteContato());
 
+        table.addMouseListener(new MouseAdapter() {
+            public void mouseClicked(MouseEvent e) {
+                int selectedRow = table.getSelectedRow();
+                if (selectedRow != -1) {
+                    nomeField.setText(tableModel.getValueAt(selectedRow, 1).toString());
+                    idadeField.setText(tableModel.getValueAt(selectedRow, 2).toString());
+                }
+            }
+        });
+
         setVisible(true);
     }
 
@@ -79,7 +89,7 @@ public class Main extends JFrame {
         String nome = nomeField.getText();
         int idade;
         try {
-            idade = Integer.parseInt(idadeField.getText());
+            idade = Integer.parseInt(idadeField.getText().trim());
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(this, "Idade inválida.", "Erro", JOptionPane.ERROR_MESSAGE);
             return;
@@ -106,7 +116,7 @@ public class Main extends JFrame {
         String nome = nomeField.getText();
         int idade;
         try {
-            idade = Integer.parseInt(idadeField.getText());
+            idade = Integer.parseInt(idadeField.getText().trim());
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(this, "Idade inválida.", "Erro", JOptionPane.ERROR_MESSAGE);
             return;
