@@ -1,12 +1,23 @@
 package br.com.agenda.factory;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.sql.DriverManager;
 
 public class ConnectionFactory {
-    private static final String USERNAME = "root";
-    private static final String PASSWORD = "P2807";
-    private static final String DATABASE_URL = "jdbc:mysql://localhost:3306/agenda";
+    static Config config;
+
+    static {
+        try {
+            config = new Config("project.properties");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+    private static final String USERNAME = config.getProperty("DB_USERNAME");
+    private static final String PASSWORD = config.getProperty("DB_PASSWORD");
+    private static final String DATABASE_URL = config.getProperty("DB_URL");
 
     public static Connection createConnectionToMySQL() throws Exception {
         Class.forName("com.mysql.cj.jdbc.Driver");
