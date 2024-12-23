@@ -68,4 +68,4 @@ Este projeto está licenciado sob a Licença MIT. Consulte o arquivo LICENSE par
 
 ## Autor
 
-Pedro Bess - [pedrobess-dev](https://github.com/pedrobess-dev)
+Pedro Bessão - [pedrobess-dev](https://github.com/pedrobess-dev)
